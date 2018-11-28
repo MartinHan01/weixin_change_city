@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/XposedDemoMartinWX.iml" filepath="$PROJECT_DIR$/XposedDemoMartinWX.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin_change_city.iml" filepath="$PROJECT_DIR$/weixin_change_city.iml" />
     </modules>
   </component>
 </project>
