@@ -1,6 +1,7 @@
 package com.martinhan.xposeddemo;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -77,8 +78,16 @@ public class XposedInit implements IXposedHookLoadPackage {
                     Field nameField = XposedHelpers.findField(regionClazz, "name");
                     Field hasChildrenField = XposedHelpers.findField(regionClazz, "hasChildren");
                     Object arrayHarryporrt = Array.get(wdnObj, 1);
-                    codeField.set(arrayHarryporrt, "哈利波特魔法学校1");
-                    nameField.set(arrayHarryporrt, "哈利波特魔法学校1");
+
+                    Context context = (Context)param.thisObject;
+                    String uri = "content://martinhanxposedwx/query";
+                    Bundle bundle = context.getContentResolver().call(
+                            Uri.parse(uri), "query", null, null);
+                    String region = bundle.getString("region");
+                    System.out.println("调用结果：" + region);
+
+                    codeField.set(arrayHarryporrt, region);
+                    nameField.set(arrayHarryporrt, region);
                     hasChildrenField.set(arrayHarryporrt,false);
                     Array.set(wdnObj, 0, arrayHarryporrt);
                 }
