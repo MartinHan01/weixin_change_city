@@ -1,3 +1,3 @@
 # 逆向微信，随意更改地区
 
-![avatar](./626715_Y7X6AD9YNG6ZMWG.png)
+<img src="http://martinhan.com/images/20181128240400.png" width="300" height="300">
