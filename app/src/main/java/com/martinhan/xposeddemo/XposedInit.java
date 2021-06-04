@@ -62,22 +62,24 @@ public class XposedInit implements IXposedHookLoadPackage {
                     }
                 }
             }});
-            XposedHelpers.findAndHookMethod("com.tencent.mm.ui.tools.MultiStageCitySelectUI", classLoader, "cJa", new Object[]{new XC_MethodHook() {
+            XposedHelpers.findAndHookMethod("com.tencent.mm.ui.tools.MultiStageCitySelectUI", classLoader, "hQs", new Object[]{new XC_MethodHook() {
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     super.beforeHookedMethod(param);
-                    XposedBridge.log("MartinHan_xposed: wx success MultiStageCitySelectUI cJa beforeHookedMethod");
+                    XposedBridge.log("MartinHan_xposed: wx success MultiStageCitySelectUI hQs beforeHookedMethod");
                 }
 
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     super.afterHookedMethod(param);
-                    XposedBridge.log("MartinHan_xposed: wx success MultiStageCitySelectUI cJa  afterHookedMethod");
-                    Object wdnObj = XposedHelpers.findField(XposedHelpers.findClass("com.tencent.mm.ui.tools.MultiStageCitySelectUI", classLoader), "wdN").get(param.thisObject);
+                    XposedBridge.log("MartinHan_xposed: wx success MultiStageCitySelectUI hQs  afterHookedMethod");
+                    Object wdnObj = XposedHelpers.findField(XposedHelpers.findClass("com.tencent.mm.ui.tools.MultiStageCitySelectUI", classLoader), "TER").get(param.thisObject);
                     Class regionClazz = XposedHelpers.findClass("com.tencent.mm.storage.RegionCodeDecoder$Region", classLoader);
                     Field codeField = XposedHelpers.findField(regionClazz, "code");
                     Field nameField = XposedHelpers.findField(regionClazz, "name");
-                    Object arrayHarryporrt = Array.get(wdnObj, 0);
+                    Field hasChildrenField = XposedHelpers.findField(regionClazz, "hasChildren");
+                    Object arrayHarryporrt = Array.get(wdnObj, 1);
                     codeField.set(arrayHarryporrt, "哈利波特魔法学校1");
                     nameField.set(arrayHarryporrt, "哈利波特魔法学校1");
+                    hasChildrenField.set(arrayHarryporrt,false);
                     Array.set(wdnObj, 0, arrayHarryporrt);
                 }
             }});
